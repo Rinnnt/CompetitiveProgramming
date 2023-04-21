@@ -1,6 +1,8 @@
+package c1768;
+
 import java.util.Scanner;
 
-public class A1768 {
+public class A {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);

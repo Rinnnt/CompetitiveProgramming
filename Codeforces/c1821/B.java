@@ -1,6 +1,8 @@
+package c1821;
+
 import java.util.Scanner;
 
-public class B1821 {
+public class B {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
