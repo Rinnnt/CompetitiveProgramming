@@ -89,7 +89,7 @@ int main() {
         }
         build(1, 1, n);
         bool found = false;
-        for (pair p : segs) {
+        for (pair<int, int> p : segs) {
           if (query(1, 1, n, p.first, p.second) > (p.second - p.first + 1) / 2) {
             found = true;
             break;
@@ -108,7 +108,7 @@ int main() {
         }
         build (1, 1, n);
         bool found = false;
-        for (pair p : segs) {
+        for (pair<int, int> p : segs) {
           if (query(1, 1, n, p.first, p.second) > (p.second - p.first + 1) / 2) {
             found = true;
             break;
