@@ -13,9 +13,13 @@ int main() {
     while (t--) {
       ll n, k;
       cin >> n >> k;
-      ll res = 0;
-      for (ll i = 1; i <= n; i++) {
-        res = max((2 * ((i + k - 1) / k)) - max(2 * i - n, 0LL), res);
+      ll m = n / 2;
+      ll ones = (m + k - 1) / k;
+      ll res = 2 * ones;
+      ll l = 1 + k * (ones - 1);
+      ll r = n - k * (ones - 1);
+      if (r - l > k) {
+        res++;
       }
       cout << res << nl;
     }
