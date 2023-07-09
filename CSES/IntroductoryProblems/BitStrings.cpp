@@ -10,12 +10,11 @@ int main() {
 
     ll n;
     cin >> n;
-    ll ans = 0;
-    for (ll i = 5; i <= n; i *= 5) {
-      ans += n / i;
+    ll ans = 1;
+    while (n--) {
+      ans = (ans * 2) % ((ll)1e9 + 7);
     }
     cout << ans;
-
 
     return 0;
 }
