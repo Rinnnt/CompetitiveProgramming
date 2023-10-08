@@ -72,7 +72,7 @@ int main() {
 
     for (auto x : wormholes) {
         ll den = k - 1;
-        ll num = d_from_s[x] * den + (d_wormholes_to_e - d_to_e[x]);
+        ll num = ((ll)d_from_s[x]) * den + (d_wormholes_to_e - d_to_e[x]);
         if (num * denominator < numerator * den) {
             numerator = num;
             denominator = den;
