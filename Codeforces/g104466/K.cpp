@@ -14,6 +14,10 @@ ll k[5001] = {};
 ll pref[5001] = {};
 
 ll solve(ll n, ll h) {
+  if (h < 5001 && n == pref[h]) {
+    return 0;
+  }
+
   if (memo.count({n, h})) {
     return memo[{n, h}];
   }
