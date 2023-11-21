@@ -18,19 +18,6 @@ void build(int idx, int l, int r) {
   s[idx] = s[idx * 2 + 1] + s[idx * 2 + 2];
 }
 
-ll query(int idx, int cl, int cr, int l, int r) {
-  if (cl > cr || cl > r || cr < l) {
-    return 0;
-  }
-  if (cl >= l && cr <= r) {
-    return s[idx];
-  }
-  int m = (cl + cr) / 2;
-  ll intmd1 = query(idx * 2 + 1, cl, m, l, r);
-  ll intmd2 = query(idx * 2 + 2, m + 1, cr, l, r);
-  return intmd1 + intmd2;
-}
-
 void update(int sidx, int l, int r, int idx, ll v) {
   if (l == r && r == idx) {
     s[sidx] = v;
@@ -43,6 +30,19 @@ void update(int sidx, int l, int r, int idx, ll v) {
     update(sidx * 2 + 2, m + 1, r, idx, v);
   }
   s[sidx] = s[sidx * 2 + 1] + s[sidx * 2 + 2];
+}
+
+ll query(int idx, int cl, int cr, int l, int r) {
+  if (cl > cr || cl > r || cr < l) {
+    return 0;
+  }
+  if (cl >= l && cr <= r) {
+    return s[idx];
+  }
+  int m = (cl + cr) / 2;
+  ll intmd1 = query(idx * 2 + 1, cl, m, l, r);
+  ll intmd2 = query(idx * 2 + 2, m + 1, cr, l, r);
+  return intmd1 + intmd2;
 }
 
 int main() {
