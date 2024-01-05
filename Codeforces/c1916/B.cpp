@@ -15,6 +15,16 @@ int main() {
     cin >> t;
     while (t--) {
 
+      ll a, b;
+      cin >> a >> b;
+
+      ll l = (a * b) / __gcd(a, b);
+      if (l == b) {
+        l *= (b / a);
+      }
+
+      cout << l << nl;
+
     }
 
     return 0;
