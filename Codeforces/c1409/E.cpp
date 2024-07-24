@@ -29,37 +29,27 @@ int main() {
 
       sort(xs.begin(), xs.end());
 
-      ll mp = 0;
-      ll mpl = 0;
-      ll mph = 0;
-      for (auto x : xset) {
-        if (upper_bound(xs.begin(), xs.end(), x + k) - lower_bound(xs.begin(), xs.end(), x) > mp) {
-          mp = upper_bound(xs.begin(), xs.end(), x + k) - lower_bound(xs.begin(), xs.end(), x);
-          mpl = x;
-          mph = x + k;
-        }
-        if (upper_bound(xs.begin(), xs.end(), x) - lower_bound(xs.begin(), xs.end(), x - k) > mp) {
-          mp = upper_bound(xs.begin(), xs.end(), x) - lower_bound(xs.begin(), xs.end(), x - k);
-          mpl = x - k;
-          mph = x;
-        }
+      vector<int> ls(n), rs(n);
+
+      int l = 0;
+      for (int r = 0; r < n; r++) {
+        while (xs[r] - xs[l] > k) l++;
+        ls[r] = r - l + 1;
+        if (r > 0) ls[r] = max(ls[r], ls[r - 1]);
       }
 
-      ll mp2 = 0;
-      for (auto x : xset) {
-        if (x > mph || x + k < mpl) {
-          if (upper_bound(xs.begin(), xs.end(), x + k) - lower_bound(xs.begin(), xs.end(), x) > mp2) {
-            mp2 = upper_bound(xs.begin(), xs.end(), x + k) - lower_bound(xs.begin(), xs.end(), x);
-          }
-        }
-        if (x - k > mph || x < mpl) {
-          if (upper_bound(xs.begin(), xs.end(), x) - lower_bound(xs.begin(), xs.end(), x - k) > mp2) {
-            mp2 = upper_bound(xs.begin(), xs.end(), x) - lower_bound(xs.begin(), xs.end(), x - k);
-          }
-        }
+      int r = n - 1;
+      for (int l = n - 1; l >= 0; l--) {
+        while (xs[r] - xs[l] > k) r--;
+        rs[l] = r - l + 1;
+        if (l < n - 1) rs[l] = max(rs[l], rs[l + 1]);
       }
 
-      cout << mp + mp2 << nl;
+      int ans = 1;
+      for (int i = 0; i < n - 1; i++) {
+        ans = max(ans, ls[i] + rs[i + 1]);
+      }
+      cout << ans << nl;
 
     }
 

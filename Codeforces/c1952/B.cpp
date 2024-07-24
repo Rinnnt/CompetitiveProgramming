@@ -15,6 +15,16 @@ int main() {
   cin >> t;
   while (t--) {
 
+    string s;
+    cin >> s;
+    string ans = "NO";
+    for (int i = 1; i < s.size(); i++) {
+      if (s[i - 1] == 'i' && s[i] == 't') {
+        ans = "YES";
+      }
+    }
+    cout << ans << nl;
+
   }
 
   return 0;
